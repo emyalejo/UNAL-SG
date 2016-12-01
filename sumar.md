@@ -37,3 +37,29 @@ namespace Number
             }                      
             return result;
         }
+
+        static void Main(string[] args)
+        {
+            string Number1text, NUmber2text;
+            Boolean OK = false;
+            int NUmber1, Number2, Total;
+            Console.WriteLine("type the first number");
+            Number1text = Console.ReadLine();
+            Console.WriteLine("type the second number");
+            NUmber2text = Console.ReadLine();
+            NUmber1 = GetNumber(Number1text.ToLower(), out OK);
+            if(OK)
+            {
+                Number1text = "zero";
+            }
+            Number2 = GetNumber(NUmber2text.ToLower(), out OK);
+            if(OK)
+            {
+                NUmber2text = "zero";
+            }
+            Total = NUmber1 + Number2;
+            Console.WriteLine(Number1text + " + " + NUmber2text + " = " + Total.ToString());
+            Console.ReadKey();            
+        }
+    }
+}
