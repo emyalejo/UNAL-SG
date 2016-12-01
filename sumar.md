@@ -16,3 +16,24 @@ namespace Number
             { "thirty",30}, { "forty", 40}, { "fifty", 50}, {" sixty", 60 },
             {"seventy", 70 }, { "eighty", 80}, { "ninety", 90}
         };
+
+ public static int GetNumber (String text, out Boolean OK)
+        {
+            String[] num = text.Split(' ');           
+            int result = 0;
+            OK = true;
+            for (int i = 1; i <= num.Count(); i++)
+            {
+                var numbers = TableNumber.Where(x => x.Key == text).ToList();
+                if (numbers.Count != 0)
+                {
+                    OK = false;
+                    return 0;
+                }
+                foreach (var number in numbers)
+                {
+                    result = (int)number.Value + result;
+                }                                
+            }                      
+            return result;
+        }
